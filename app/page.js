@@ -4,9 +4,9 @@ export default function Home() {
       <nav>
         <div className="logo">Nestly</div>
         <div className="nav-links">
-          <a href="#">For landlords</a>
-          <a href="#">For tenants</a>
-          <a href="#">Sign in</a>
+          <a href="/listings">For landlords</a>
+          <a href="/listings">For tenants</a>
+          <a href="/login">Sign in</a>
         </div>
       </nav>
 
@@ -17,8 +17,8 @@ export default function Home() {
           and pay rent safely — all in one place. No more agent fees for a
           listing that doesn&apos;t exist.
         </p>
-        <a href="#" className="btn">Find a rental</a>
-        <a href="#" className="btn btn-outline">List your property</a>
+        <a href="/listings" className="btn">Find a rental</a>
+        <a href="/signup" className="btn btn-outline">List your property</a>
       </section>
 
       <section className="features">

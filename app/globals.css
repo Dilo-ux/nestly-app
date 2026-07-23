@@ -116,3 +116,178 @@ footer {
     font-size: 30px;
   }
 }
+
+.form-wrap {
+  max-width: 420px;
+  margin: 60px auto;
+}
+
+.form-wrap h1 {
+  font-size: 28px;
+  color: #0f2b22;
+  margin-bottom: 6px;
+}
+
+.form-subtitle {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.role-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.role-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  background: white;
+  font-weight: 600;
+  cursor: pointer;
+  color: #666;
+}
+
+.role-btn.active {
+  border-color: #0f6e56;
+  color: #0f6e56;
+  background: #eaf6f2;
+}
+
+form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 14px 0 6px;
+  color: #333;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+form button.btn {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form button.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-error {
+  color: #b3261e;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.form-success {
+  color: #0f6e56;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.form-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.form-footer a {
+  color: #0f6e56;
+  font-weight: 600;
+}
+
+.user-tag {
+  color: #666;
+  font-size: 14px;
+}
+
+.listing-form-wrap {
+  max-width: 480px;
+  margin: 40px 0;
+  padding: 24px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.listing-form-wrap h2 {
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: #0f2b22;
+}
+
+.listing-form input,
+.listing-form textarea {
+  margin-bottom: 10px;
+}
+
+.listings-section {
+  margin: 40px 0 80px;
+}
+
+.listings-section h2 {
+  font-size: 20px;
+  color: #0f2b22;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  color: #888;
+}
+
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.listing-card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.listing-card h3 {
+  font-size: 16px;
+  color: #0f2b22;
+  margin-bottom: 6px;
+}
+
+.listing-location {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.listing-price {
+  color: #0f6e56;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.listing-desc {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .listing-grid {
+    grid-template-columns: 1fr;
+  }
+}
