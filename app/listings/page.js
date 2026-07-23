@@ -12,6 +12,7 @@ export default function Listings() {
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [formStatus, setFormStatus] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -40,12 +41,34 @@ export default function Listings() {
     setSubmitting(true);
     setFormStatus(null);
 
+    let imageUrl = null;
+
+    if (photo) {
+      const filePath = `${user.id}/${Date.now()}-${photo.name}`;
+      const { error: uploadError } = await supabase.storage
+        .from("listing-photos")
+        .upload(filePath, photo);
+
+      if (uploadError) {
+        setSubmitting(false);
+        setFormStatus({ type: "error", message: uploadError.message });
+        return;
+      }
+
+      const { data: publicUrlData } = supabase.storage
+        .from("listing-photos")
+        .getPublicUrl(filePath);
+
+      imageUrl = publicUrlData.publicUrl;
+    }
+
     const { error } = await supabase.from("listings").insert({
       landlord_id: user.id,
       title,
       location,
       price: Number(price),
       description,
+      image_url: imageUrl,
     });
 
     setSubmitting(false);
@@ -58,6 +81,7 @@ export default function Listings() {
       setLocation("");
       setPrice("");
       setDescription("");
+      setPhoto(null);
       loadListings();
     }
   }
@@ -105,6 +129,12 @@ export default function Listings() {
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
             />
+            <label className="photo-label">Property photo</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setPhoto(e.target.files[0])}
+            />
             <button type="submit" className="btn" disabled={submitting}>
               {submitting ? "Posting..." : "Post listing"}
             </button>
@@ -126,6 +156,9 @@ export default function Listings() {
         <div className="listing-grid">
           {listings.map((item) => (
             <div className="listing-card" key={item.id}>
+              {item.image_url && (
+                <img src={item.image_url} alt={item.title} className="listing-photo" />
+              )}
               <h3>{item.title}</h3>
               <p className="listing-location">{item.location}</p>
               <p className="listing-price">
